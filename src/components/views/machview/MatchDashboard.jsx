@@ -5,6 +5,8 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { Link } from "react-router-dom";
 import { matchRecord } from "../../../masterdata/matchRecord";
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+
 
 
 export default function MatchDashboard() {
@@ -33,6 +35,14 @@ export default function MatchDashboard() {
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
+                  <div className="flex items-center text-gray-600 text-sm mb-4">
+                    <FaHome className="mr-1 text-blue-500" />
+                    <Link to="/" className="hover:underline">Home</Link>
+                    <FaChevronRight className="mx-2 text-gray-400" />
+                    <Link to="/clients" className="hover:underline">Clients</Link>
+                    <FaChevronRight className="mx-2 text-gray-400" />
+                    <span className="text-orange-500"> Matches</span>
+                  </div>
             <div className="max-w-7xl mx-auto">
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">Match Dashboard</h2>
                 <p className="text-gray-600 mb-6">Overview of gaming matches and results</p>

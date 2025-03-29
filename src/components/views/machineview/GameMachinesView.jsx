@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gameMachines } from '../../../masterdata/gameMachine';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const GameMachinesView = () => {
   const [selectedRegion, setSelectedRegion] = useState('All');
@@ -23,6 +25,14 @@ const GameMachinesView = () => {
 
   return (
     <div className="p-6 bg-gray-50">
+             <div className="flex items-center text-gray-600 text-sm pb-4">
+              <FaHome className="mr-1 text-blue-500" />
+              <Link to="/" className="hover:underline">Home</Link>
+              <FaChevronRight className="mx-2 text-gray-400" />
+              <Link to="/machines" className="hover:underline">Machines</Link>
+              <FaChevronRight className="mx-2 text-gray-400" />
+              <span className="text-orange-500">Game Machines</span>
+            </div>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h2 className="text-2xl font-bold text-gray-800">Game Machines</h2>
         

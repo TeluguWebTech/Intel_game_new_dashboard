@@ -7,7 +7,6 @@ import AccountsBlock from './components/views/accountsview/AccountsBlock'
 import CustomersBlock from './components/views/customerview/CustomersBlock'
 import HRblocks from './components/views/hrview/HRblocks'
 import EmployeesBlock from './components/views/employeeview/EmployeesBlock'
-import TaskDashboard from './components/views/serviceview/ServicesBlock'
 import LandingPage from './pages/LandingPage'
 import NavbarComp from './components/NavbarComp'
 import ClientLocations from './components/views/clientview/ClientLocations'
@@ -26,7 +25,7 @@ import GameMachinesView from './components/views/machineview/GameMachinesView'
 import GameMachineDetails from './components/views/machineview/GameMachineDetails'
 import TRTMachineView from './components/views/machineview/TRTMachineView'
 import TRTDeposits from './components/views/machineview/TRTDeposits'
-import TRTWithdraws from './components/views/machineview/TRTWithdraws'
+import { TRTWithdraws,WithdrawalDetail } from './components/views/machineview/TRTWithdraws'
 import MachineReports from './components/views/machineview/MachineReports'
 import TotalRevenue from './components/views/revenueview/TotalRevenue'
 import RevenueTransactions from './components/views/revenueview/RevenueTransactions'
@@ -48,6 +47,23 @@ import AllEmployees from './components/views/employeeview/AllEmployees'
 import EmpAttLeaves from './components/views/hrview/EmpAttLeaves'
 import Payroll from './components/views/hrview/Payroll'
 import EmployeePerformance from './components/views/hrview/EmpPerformance'
+import ClientContacts from './components/views/clientview/ClientContacts'
+import MachineLocations from './components/views/machineview/MachineLocations'
+import RevenueDashboard from './components/views/revenueview/RevenueDashboard'
+import ClientLocationDetail from './components/views/ClientLocatinDetail'
+import TaskDashboard from './components/views/taskview/TaskDashboard'
+import MarketingDashboard from './components/views/marketingview/MarketingDashboard'
+import TRTDepositDetails from './components/views/machineview/TRTDepositDetails'
+import IncomeDetails from './components/views/accountsview/IncomeDetails'
+import PaymentDetails from './components/views/accountsview/PaymentDetails'
+import IncomeDetailRecord from './components/views/accountsview/IncomeDetailRecord'
+import PaymentDetailRecord from './components/views/accountsview/PaymentDetailRecord'
+import PurchaseDetailRecord from './components/views/accountsview/PurchaseDetailRecord'
+import SalaryDetailRecord from './components/views/accountsview/SalaryDetailRecord'
+import CustomerDetail from './components/views/customerview/CustomerDetail'
+import SessionDetail from './components/views/customerview/SessionDetail'
+
+
 
 const App = () => {
   return (
@@ -57,7 +73,8 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/clients" element={<ClientBlocks />}/>
         <Route path="/machines" element={ <MachineBlocks />}/>
-        <Route path="/revenue" element={ <RevenueBlocks/>}/>
+        {/* <Route path="/revenue" element={ <RevenueBlocks/>}/> */}
+        <Route path="/revenue" element={ <RevenueDashboard/>}/>
         <Route path="/accounts" element={ <AccountsBlock/>}/>
         <Route path="/customers" element={ <CustomersBlock />}/>
         <Route path="/hr" element={ <HRblocks />}/>
@@ -101,7 +118,20 @@ const App = () => {
         <Route path="/emp-register" element={<EmpAttLeaves />} />
         <Route path="/emp-payroll" element={<Payroll />} />
         <Route path="/emp-performance" element={<EmployeePerformance />} />
-
+        <Route path="/client-contacts" element={<ClientContacts/>} />
+        <Route path="/machine-locations" element={<MachineLocations/>} />
+        <Route path="/location-detail" element={<ClientLocationDetail/>} />
+        <Route path="/marketing" element={<MarketingDashboard/>} />
+        <Route path="/machines/trt-deposits/:receiptId" element={<TRTDepositDetails/>} />
+        <Route path="/machines/withdrawals/:receiptId" element={<WithdrawalDetail />} />
+        <Route path="/accounts/income/:vendorId" element={<IncomeDetails />} />
+        <Route path="/accounts/payments/:vendorId" element={<PaymentDetails />} />
+        <Route path="/accounts/income/:vendorId" element={<IncomeDetailRecord />} />
+      <Route path="/accounts/payments/:vendorId" element={<PaymentDetailRecord />} />
+      <Route path="/accounts/purchases/:vendorId" element={<PurchaseDetailRecord />} />
+      <Route path="/accounts/salaries/:empId" element={<SalaryDetailRecord />} />
+      <Route path="/customers/:customerId" element={<CustomerDetail />} />
+      <Route path="/customers/sessions/:sessionId" element={<SessionDetail />} />
       </Routes>
      
     </div>

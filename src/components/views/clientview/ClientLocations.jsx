@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { clientData } from "../../../masterdata/clientData";
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
 
 export default function ClientLocations() {
   const [search, setSearch] = useState("");
@@ -20,7 +23,14 @@ export default function ClientLocations() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      {/* Heading */}
+         <div className="flex items-center text-gray-600 text-sm mb-4">
+        <FaHome className="mr-1 text-blue-500" />
+        <Link to="/" className="hover:underline">Home</Link>
+        <FaChevronRight className="mx-2 text-gray-400" />
+        <Link to="/clients" className="hover:underline">Clients</Link>
+        <FaChevronRight className="mx-2 text-gray-400" />
+        <span className="text-orange-500"> Locations</span>
+      </div>
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-gray-800 mb-2">Client Locations</h2>
         <p className="text-gray-600">Overview of all client locations and their Machines.</p>

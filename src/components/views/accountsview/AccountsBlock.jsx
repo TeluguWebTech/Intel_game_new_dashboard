@@ -1,6 +1,8 @@
 import { FaGamepad, FaDollarSign, FaMapMarkerAlt, FaExchangeAlt, FaChartPie, FaFileAlt } from "react-icons/fa";
 import AccountDataTable from "./AccountDataTable";
-import { Link } from "react-router-dom";
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
 
 const stats = [
   { 
@@ -35,14 +37,14 @@ const stats = [
     color: "text-green-500" ,
     path:"/account-transactions"
   },
-  { 
-    title: "Expenses", 
-    value: "$103,430", 
-    change: "+5% than yesterday", 
-    icon: <FaChartPie />, // Pie chart for financial summary  
-    color: "text-green-500",
-    path:"/account-expenses"
-  },
+  // { 
+  //   title: "Expenses", 
+  //   value: "$103,430", 
+  //   change: "+5% than yesterday", 
+  //   icon: <FaChartPie />, // Pie chart for financial summary  
+  //   color: "text-green-500",
+  //   path:"/account-expenses"
+  // },
   { 
     title: "Reports", 
     value: "325", 
@@ -56,8 +58,14 @@ const stats = [
 
 export default function AccountsBlock() {
   return (
-   <div className="">
-     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-6">
+   <div className="p-6 bg-gray-50">
+            <div className="flex items-center text-gray-600 text-sm pb-2">
+                        <FaHome className="mr-1 text-blue-500" />
+                        <Link to="/" className="hover:underline">Home</Link>
+                        <FaChevronRight className="mx-2 text-gray-400" />
+                        <span className="text-orange-500">Accounts</span>
+                      </div>
+     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-6">
      {stats.map((stat, index) => (
           stat.path ? (
             <Link to={stat.path} key={index} className="p-4 rounded-lg shadow-md block transition hover:bg-gray-100">

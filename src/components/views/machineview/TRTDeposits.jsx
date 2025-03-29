@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { trtDeposits } from '../../../masterdata/trtDepositsData';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const TRTDeposits = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,6 +30,14 @@ const TRTDeposits = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+                 <div className="flex items-center text-gray-600 text-sm pb-4">
+                          <FaHome className="mr-1 text-blue-500" />
+                          <Link to="/" className="hover:underline">Home</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <Link to="/machines" className="hover:underline">Machines</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <span className="text-orange-500">TRT Deposits</span>
+                        </div>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Deposit Overview</h1>
       
       {/* Search and Filter Section */}
@@ -112,7 +122,14 @@ const TRTDeposits = () => {
                 <div className="flex justify-between items-center">
                   <span className="text-xs text-gray-500">{deposit.date}</span>
                   <div className="flex space-x-2">
-                    <button className="text-xs text-blue-600 hover:text-blue-800">View</button>
+                    {/* <button className="text-xs text-blue-600 hover:text-blue-800">View</button>
+                     */}
+<Link 
+  to={`/machines/trt-deposits/${deposit.receipt_id}`}
+  className="text-xs text-blue-600 hover:text-blue-800"
+>
+  View
+</Link>
                     <button className="text-xs text-gray-600 hover:text-gray-800">Edit</button>
                   </div>
                 </div>

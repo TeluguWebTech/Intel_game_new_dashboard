@@ -1,9 +1,20 @@
 import React from 'react';
 import { clientSalesData } from '../../../masterdata/clientSalesData';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
 
 const TotalRevenue = () => {
   return (
     <div className="container mx-auto px-4 py-8">
+      <div className="flex items-center text-gray-600 text-sm pb-4">
+                          <FaHome className="mr-1 text-blue-500" />
+                          <Link to="/" className="hover:underline">Home</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <Link to="/revenue" className="hover:underline">Revenue</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <span className="text-orange-500">Total Revenue</span>
+                        </div>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Client Sales Overview</h1>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

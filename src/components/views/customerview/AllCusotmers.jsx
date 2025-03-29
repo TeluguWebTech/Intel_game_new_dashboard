@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { customerData } from '../../../masterdata/customers/customerListData';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const AllCustomers = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -26,6 +28,14 @@ const AllCustomers = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+          <div className="flex items-center text-gray-600 text-sm pb-4">
+        <FaHome className="mr-1 text-blue-500" />
+        <Link to="/" className="hover:underline">Home</Link>
+        <FaChevronRight className="mx-2 text-gray-400" />
+        <Link to="/customers" className="hover:underline">Customers</Link>
+        <FaChevronRight className="mx-2 text-gray-400" />
+        <span className="text-orange-500">Customers List</span>
+      </div>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Customer Dashboard</h1>
       
       {/* Filters */}

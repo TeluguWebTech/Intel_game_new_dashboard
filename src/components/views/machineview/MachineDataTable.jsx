@@ -195,7 +195,6 @@ const ClientDataTable = () => {
             >
               Client Name {sortConfig.key === 'client_name' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
             <th 
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
               onClick={() => requestSort('location')}
@@ -227,13 +226,7 @@ const ClientDataTable = () => {
                   <div className="text-sm font-medium text-gray-900">{client.client_name}</div>
                   <div className="text-sm text-gray-500">{client.id}</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <img 
-                    src={client.image} 
-                    alt={client.client_name} 
-                    className="h-10 w-10 rounded-full object-cover"
-                  />
-                </td>
+               
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-900">{client.location}</div>
                   <div className="text-sm text-gray-500">{client.state}</div>
@@ -271,16 +264,15 @@ const ClientDataTable = () => {
   const renderGameMachinesTable = () => (
     <>
       <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+        <thead className="bg-blue-500 ">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Machine ID</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Features</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Client</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Games/Hours</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Readings</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Machine ID</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Model</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Features</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Location</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Client</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Games/Hours</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Readings</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
@@ -290,13 +282,7 @@ const ClientDataTable = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   {machine.machine_id}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <img 
-                    src={machine.machine_image} 
-                    alt={machine.machine_model} 
-                    className="h-10 w-10 rounded-full object-cover"
-                  />
-                </td>
+               
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {machine.machine_model}
                 </td>
@@ -346,7 +332,6 @@ const ClientDataTable = () => {
         <thead className="bg-gray-50">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TRT ID</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Features</th>
@@ -362,13 +347,7 @@ const ClientDataTable = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   {machine.trtMachine_id}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <img 
-                    src={machine.trtMachine_image} 
-                    alt={machine.trtMachine_model} 
-                    className="h-10 w-10 rounded-full object-cover"
-                  />
-                </td>
+             
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {machine.trtMachine_model}
                 </td>

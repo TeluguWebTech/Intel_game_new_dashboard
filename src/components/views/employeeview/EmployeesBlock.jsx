@@ -1,4 +1,6 @@
 import EmployeeDataTable from "./EmployeeDataTable";
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 import { 
   FaUsers, 
@@ -24,8 +26,15 @@ const stats = [
 
 export default function EmployeesBlock() {
   return (
-   <div className="">
-     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-6">
+   <div className="px-4 py-8">
+        <div className="flex items-center text-gray-600 text-sm ">
+                                  <FaHome className="mr-1 text-blue-500" />
+                                  <Link to="/" className="hover:underline">Home</Link>
+                                  <FaChevronRight className="mx-2 text-gray-400" />
+                                
+                                  <span className="text-orange-500">Employee Dashboard</span>
+                                </div>
+     {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-6">
       {stats.map((stat, index) => (
         <div key={index} className="p-4 rounded-lg shadow-md">
           <div className="flex justify-between items-center">
@@ -36,7 +45,7 @@ export default function EmployeesBlock() {
           <p className={`text-xs mt-1 ${stat.color}`}>{stat.change}</p>
         </div>
       ))}
-    </div>
+    </div> */}
     <EmployeeDataTable />
    </div>
   );

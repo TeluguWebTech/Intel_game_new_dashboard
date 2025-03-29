@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { empPayrol } from '../../../masterdata/hrdata/empPayrol';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Payroll = () => {
   const [payrolls, setPayrolls] = useState(empPayrol);
@@ -28,6 +30,14 @@ const Payroll = () => {
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
+        <div className="flex items-center text-gray-600 text-sm pb-4">
+                          <FaHome className="mr-1 text-blue-500" />
+                          <Link to="/" className="hover:underline">Home</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <Link to="/hr" className="hover:underline">HR</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <span className="text-orange-500">Payroll Process</span>
+                        </div>
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Payroll Processed</h1>
       
       {/* Filters */}

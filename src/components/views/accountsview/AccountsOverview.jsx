@@ -3,6 +3,8 @@ import { incomeData } from '../../../masterdata/accounts/incomeData';
 import { paymentsData } from '../../../masterdata/accounts/paymentsData';
 import { purchaseData } from '../../../masterdata/accounts/purchaseData';
 import { salaryAccounts } from '../../../masterdata/accounts/salaryAccountData';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const AccountsOverview = () => {
   // Calculate totals
@@ -13,6 +15,14 @@ const AccountsOverview = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+          <div className="flex items-center text-gray-600 text-sm pb-2">
+                              <FaHome className="mr-1 text-blue-500" />
+                              <Link to="/" className="hover:underline">Home</Link>
+                              <FaChevronRight className="mx-2 text-gray-400" />
+                              <Link to="/accounts" className="hover:underline">Accounts</Link>
+                              <FaChevronRight className="mx-2 text-gray-400" />
+                              <span className="text-orange-500">Overview</span>
+                            </div>
       <h1 className="text-3xl font-bold text-center mb-8 text-blue-700">Financial Data Overview</h1>
       
       {/* Summary Cards */}
@@ -47,13 +57,13 @@ const AccountsOverview = () => {
         <h2 className="text-xl font-semibold mb-4 text-blue-600">Income Summary</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-blue-500">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vendor</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Branch</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Purpose</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment Mode</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Vendor</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Branch</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Amount</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Purpose</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Payment Mode</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">

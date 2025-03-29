@@ -1,6 +1,7 @@
 import { FaGamepad, FaServer, FaMapMarkedAlt, FaPiggyBank, FaMoneyBillWave, FaFileInvoice } from "react-icons/fa";
 import CustomerTable from "./CustomerTable";
-import { Link } from "react-router-dom";
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const stats = [
   { title: "Total Customers", value: "2,300", change: "+Add New Machine", icon: <FaGamepad />, color: "text-orange-500", path:"/customer-list" }, // Gamepad icon for gaming machines
@@ -16,8 +17,15 @@ const stats = [
 
 export default function CustomersBlock() {
   return (
-   <div className="">
-     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-4 p-6">
+   <div className="p-4 bg-gray-50 rounded-lg">
+    <div className="flex items-center text-gray-600 text-sm pb-4">
+        <FaHome className="mr-1 text-blue-500" />
+        <Link to="/" className="hover:underline">Home</Link>
+       
+        <FaChevronRight className="mx-2 text-gray-400" />
+        <span className="text-orange-500">Customers</span>
+      </div>
+     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-4 p-2">
      {stats.map((stat, index) => (
           stat.path ? (
             <Link to={stat.path} key={index} className="p-4 rounded-lg shadow-md block transition hover:bg-gray-100">

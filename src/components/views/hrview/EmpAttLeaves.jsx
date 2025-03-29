@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { empData } from '../../../masterdata/hrdata/employeeData';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
 
 const EmpAttLeaves = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,6 +49,14 @@ const EmpAttLeaves = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center text-gray-600 text-sm pb-4">
+                          <FaHome className="mr-1 text-blue-500" />
+                          <Link to="/" className="hover:underline">Home</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <Link to="/hr" className="hover:underline">HR</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <span className="text-orange-500">Attandance</span>
+                        </div>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Attendance & Leaves Management</h1>
       
       {/* Filters */}

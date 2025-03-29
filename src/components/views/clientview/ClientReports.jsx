@@ -4,6 +4,10 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
 import { clientReportData } from '../../../masterdata/reports/clientReportsData';
+import { Link } from "react-router-dom";
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+
+
 
 const ClientReports = () => {
   const { analyticsReports } = clientReportData;
@@ -40,6 +44,14 @@ const ClientReports = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
+            <div className="flex items-center text-gray-600 text-sm mb-4">
+                          <FaHome className="mr-1 text-blue-500" />
+                          <Link to="/" className="hover:underline">Home</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <Link to="/clients" className="hover:underline">Clients</Link>
+                          <FaChevronRight className="mx-2 text-gray-400" />
+                          <span className="text-orange-500">Reports</span>
+                        </div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800">Client Analytics Dashboard</h1>
         <div className="relative">

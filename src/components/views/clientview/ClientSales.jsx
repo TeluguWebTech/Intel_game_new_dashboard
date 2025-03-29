@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { clientSalesData } from '../../../masterdata/clientSalesData';
 import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
-
 import { Link } from 'react-router-dom';
 
 export const ClientSales = () => {
@@ -28,14 +27,14 @@ export const ClientSales = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-50 rounded-lg">
-       <div className="flex items-center text-gray-600 text-sm ">
+    <div className="p-4 bg-gray-50 rounded-lg">
+       <div className="flex items-center text-gray-600 text-sm pb-4">
         <FaHome className="mr-1 text-blue-500" />
         <Link to="/" className="hover:underline">Home</Link>
         <FaChevronRight className="mx-2 text-gray-400" />
         <Link to="/clients" className="hover:underline">Clients</Link>
         <FaChevronRight className="mx-2 text-gray-400" />
-        <span className="text-gray-500">Sales</span>
+        <span className="text-orange-500">Sales</span>
       </div>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>

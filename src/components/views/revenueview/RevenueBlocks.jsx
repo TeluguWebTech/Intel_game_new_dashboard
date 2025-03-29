@@ -3,6 +3,7 @@ import {
     FaPiggyBank, FaMoneyBillWave, FaFileAlt 
   } from "react-icons/fa";
 import RevenueDataTable from "./RevenueDataTable";
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
   
   const stats = [
@@ -18,8 +19,15 @@ import { Link } from "react-router-dom";
 
 export default function RevenueBlocks() {
   return (
-   <div className="">
-     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-6">
+   <div className="p-6 bg-gray-50">
+           <div className="flex items-center text-gray-600 text-sm pb-4">
+                        <FaHome className="mr-1 text-blue-500" />
+                        <Link to="/" className="hover:underline">Home</Link>
+                       
+                        <FaChevronRight className="mx-2 text-gray-400" />
+                        <span className="text-orange-500">Revenue</span>
+                      </div>
+     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-6 pt-2">
      {stats.map((stat, index) => (
           stat.path ? (
             <Link to={stat.path} key={index} className="p-4 rounded-lg shadow-md block transition hover:bg-gray-100">

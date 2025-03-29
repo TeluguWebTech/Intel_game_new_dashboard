@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { incomeData } from '../../../masterdata/accounts/incomeData';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { FaHome, FaChevronRight, FaPlus, FaEye } from "react-icons/fa";
+import { Link, useNavigate } from 'react-router-dom';
 
 const IncomeView = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('all');
   const [selectedDate, setSelectedDate] = useState(null);
+  const navigate = useNavigate();
   
   // Get unique regions for filter dropdown
   const regions = [...new Set(incomeData.map(item => item.region))];
@@ -30,8 +33,21 @@ const IncomeView = () => {
     return matchesSearch && matchesRegion && matchesDate;
   });
 
+  const handleViewDetails = (vendorId) => {
+    navigate(`/accounts/income/${vendorId}`);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
+      <div className="flex items-center text-gray-600 text-sm pb-2">
+        <FaHome className="mr-1 text-blue-500" />
+        <Link to="/" className="hover:underline">Home</Link>
+        <FaChevronRight className="mx-2 text-gray-400" />
+        <Link to="/accounts" className="hover:underline">Accounts</Link>
+        <FaChevronRight className="mx-2 text-gray-400" />
+        <span className="text-orange-500">Income</span>
+      </div>
+      
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Income Records</h1>
       
       {/* Filters */}
@@ -126,11 +142,17 @@ const IncomeView = () => {
               </div>
               
               {/* Card Footer */}
-              <div className="px-4 py-3 bg-gray-50 border-t border-gray-200">
-                <div className="flex justify-between items-center">
+              <div className="px-4 py-3 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
+                <div>
                   <span className="text-xs text-gray-500">{income.date}</span>
-                  <span className="text-xs font-medium text-blue-600">{income.region}</span>
+                  <span className="text-xs font-medium text-blue-600 block">{income.region}</span>
                 </div>
+                <button
+                  onClick={() => handleViewDetails(income.vendor_id)}
+                  className="text-blue-600 hover:text-blue-800 flex items-center text-sm"
+                >
+                  <FaEye className="mr-1" /> View
+                </button>
               </div>
             </div>
           ))}

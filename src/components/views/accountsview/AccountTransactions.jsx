@@ -3,6 +3,9 @@ import { incomeData } from '../../../masterdata/accounts/incomeData';
 import { paymentsData } from '../../../masterdata/accounts/paymentsData';
 import { purchaseData } from '../../../masterdata/accounts/purchaseData';
 import { salaryAccounts } from '../../../masterdata/accounts/salaryAccountData';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -11,6 +14,20 @@ const AccountTransactions = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('All');
   const [selectedDate, setSelectedDate] = useState('');
+
+  const navigate = useNavigate();
+
+  const handleViewDetails = (transaction) => {
+    if (transaction.type === 'income') {
+      navigate(`/accounts/income/${transaction.vendor_id}`);
+    } else if (transaction.type === 'payment') {
+      navigate(`/accounts/payments/${transaction.vendor_id}`);
+    } else if (transaction.type === 'purchase') {
+      navigate(`/accounts/purchases/${transaction.vendor_id}`);
+    } else if (transaction.type === 'salary') {
+      navigate(`/accounts/salaries/${transaction.emp_id}`);
+    }
+  };
 
   // Combine all transaction data
   const allTransactions = [
@@ -69,8 +86,44 @@ const AccountTransactions = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Transactions Dashboard</h1>
-      
+         <div className="flex items-center text-gray-600 text-sm pb-2">
+                               <FaHome className="mr-1 text-blue-500" />
+                              <Link to="/" className="hover:underline">Home</Link>
+                               <FaChevronRight className="mx-2 text-gray-400" />
+                              <Link to="/accounts" className="hover:underline">Accounts</Link>
+                              <FaChevronRight className="mx-2 text-gray-400" />
+                              <span className="text-orange-500">Transactions</span>
+                           </div>
+      <h1 className="text-2xl font-bold text-gray-800 mb-6">Transaction Details</h1>
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="bg-white p-6 rounded-xl shadow border-l-4 border-green-500">
+          <h3 className="text-sm font-medium text-gray-500">Total Income</h3>
+          <p className="mt-1 text-2xl font-bold text-green-600">
+            ${incomeData.reduce((sum, item) => sum + item.received_amount, 0).toLocaleString()}
+          </p>
+        </div>
+        
+        <div className="bg-white p-6 rounded-xl shadow border-l-4 border-red-500">
+          <h3 className="text-sm font-medium text-gray-500">Total Payments</h3>
+          <p className="mt-1 text-2xl font-bold text-red-600">
+            ${paymentsData.reduce((sum, item) => sum + item.paid_amount, 0).toLocaleString()}
+          </p>
+        </div>
+        
+        <div className="bg-white p-6 rounded-xl shadow border-l-4 border-orange-500">
+          <h3 className="text-sm font-medium text-gray-500">Total Purchases</h3>
+          <p className="mt-1 text-2xl font-bold text-orange-600">
+            ${purchaseData.reduce((sum, item) => sum + item.purchase_amount, 0).toLocaleString()}
+          </p>
+        </div>
+        
+        <div className="bg-white p-6 rounded-xl shadow border-l-4 border-blue-500">
+          <h3 className="text-sm font-medium text-gray-500">Total Salaries</h3>
+          <p className="mt-1 text-2xl font-bold text-blue-600">
+            ${salaryAccounts.reduce((sum, item) => sum + item.paid_amount, 0).toLocaleString()}
+          </p>
+        </div>
+      </div>
       {/* Tabs */}
       <div className="flex border-b border-gray-200 mb-6">
         <button
@@ -197,9 +250,12 @@ const AccountTransactions = () => {
                       ${amountInfo.amount?.toLocaleString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button className="text-blue-600 hover:text-blue-900 mr-3">
-                        View
-                      </button>
+                    <button 
+  className="text-blue-600 hover:text-blue-900 mr-3"
+  onClick={() => handleViewDetails(transaction)}
+>
+  View
+</button>
                       <button className="text-gray-600 hover:text-gray-900">
                         <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
@@ -239,35 +295,7 @@ const AccountTransactions = () => {
       </div>
       
       {/* Summary Cards */}
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow border-l-4 border-green-500">
-          <h3 className="text-sm font-medium text-gray-500">Total Income</h3>
-          <p className="mt-1 text-2xl font-bold text-green-600">
-            ${incomeData.reduce((sum, item) => sum + item.received_amount, 0).toLocaleString()}
-          </p>
-        </div>
-        
-        <div className="bg-white p-6 rounded-xl shadow border-l-4 border-red-500">
-          <h3 className="text-sm font-medium text-gray-500">Total Payments</h3>
-          <p className="mt-1 text-2xl font-bold text-red-600">
-            ${paymentsData.reduce((sum, item) => sum + item.paid_amount, 0).toLocaleString()}
-          </p>
-        </div>
-        
-        <div className="bg-white p-6 rounded-xl shadow border-l-4 border-orange-500">
-          <h3 className="text-sm font-medium text-gray-500">Total Purchases</h3>
-          <p className="mt-1 text-2xl font-bold text-orange-600">
-            ${purchaseData.reduce((sum, item) => sum + item.purchase_amount, 0).toLocaleString()}
-          </p>
-        </div>
-        
-        <div className="bg-white p-6 rounded-xl shadow border-l-4 border-blue-500">
-          <h3 className="text-sm font-medium text-gray-500">Total Salaries</h3>
-          <p className="mt-1 text-2xl font-bold text-blue-600">
-            ${salaryAccounts.reduce((sum, item) => sum + item.paid_amount, 0).toLocaleString()}
-          </p>
-        </div>
-      </div>
+    
     </div>
   );
 };

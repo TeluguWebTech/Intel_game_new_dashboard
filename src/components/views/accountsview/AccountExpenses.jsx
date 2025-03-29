@@ -5,7 +5,8 @@ import { incomeData } from '../../../masterdata/accounts/incomeData';
 import { paymentsData } from '../../../masterdata/accounts/paymentsData';
 import { purchaseData } from '../../../masterdata/accounts/purchaseData';
 import { salaryAccounts } from '../../../masterdata/accounts/salaryAccountData';
-
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 const AccountExpenses = () => {
@@ -58,7 +59,15 @@ const AccountExpenses = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8">
+                              <div className="flex items-center text-gray-600 text-sm pb-2">
+                                     <FaHome className="mr-1 text-blue-500" />
+                                    <Link to="/" className="hover:underline">Home</Link>
+                                     <FaChevronRight className="mx-2 text-gray-400" />
+                                    <Link to="/accounts" className="hover:underline">Accounts</Link>
+                                    <FaChevronRight className="mx-2 text-gray-400" />
+                                    <span className="text-orange-500">Expenses</span>
+                                 </div>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Expenses Dashboard</h1>
       
       {/* Summary Cards */}

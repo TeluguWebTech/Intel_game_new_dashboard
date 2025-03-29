@@ -1,6 +1,6 @@
 import { FaUsers, FaDollarSign, FaMapMarkerAlt, FaChartBar, FaPercentage, FaFileAlt } from "react-icons/fa";
-import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
 import ClientDataTable from "./ClientTable";
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const stats = [
@@ -14,15 +14,15 @@ const stats = [
 
 export default function ClientBlocks() {
   return (
-    <div className="">
-            <div className="flex items-center text-gray-600 text-sm ">
+    <div  className="p-4 bg-gray-50 rounded-lg">
+              <div className="flex items-center text-gray-600 text-sm pb-4">
         <FaHome className="mr-1 text-blue-500" />
         <Link to="/" className="hover:underline">Home</Link>
+       
         <FaChevronRight className="mx-2 text-gray-400" />
-   
-        <span className="text-gray-500">Clients</span>
+        <span className="text-orange-500">Clients</span>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-6 pt-2">
         {stats.map((stat, index) => (
           stat.path ? (
             <Link to={stat.path} key={index} className="p-4 rounded-lg shadow-md block transition hover:bg-gray-100">

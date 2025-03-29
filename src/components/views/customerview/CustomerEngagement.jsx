@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import { customerSessionsData } from '../../../masterdata/customers/sessionData';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const CustomerEngagement = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('All');
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
+
+  const navigate = useNavigate();
+
+  const handleViewDetails = (sessionId) => {
+    navigate(`/customers/sessions/${sessionId}`);
+  };
+  
 
   // Get unique regions
   const regions = ['All', ...new Set(customerSessionsData.map(session => session.region))];
@@ -38,6 +49,14 @@ const CustomerEngagement = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+             <div className="flex items-center text-gray-600 text-sm pb-4">
+              <FaHome className="mr-1 text-blue-500" />
+              <Link to="/" className="hover:underline">Home</Link>
+              <FaChevronRight className="mx-2 text-gray-400" />
+              <Link to="/customers" className="hover:underline">Customers</Link>
+              <FaChevronRight className="mx-2 text-gray-400" />
+              <span className="text-orange-500">Customers Engagement</span>
+            </div>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Customer Engagement</h1>
       
       {/* Filters */}
@@ -141,6 +160,7 @@ const CustomerEngagement = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Games</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rewards</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -176,6 +196,14 @@ const CustomerEngagement = () => {
                       +{session.reward_points_earned} pts
                     </span>
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+  <button
+    onClick={() => handleViewDetails(session.session_id)}
+    className="text-indigo-600 hover:text-indigo-900"
+  >
+    View
+  </button>
+  </td>
                 </tr>
               ))
             ) : (

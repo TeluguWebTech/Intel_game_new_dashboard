@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { customerSessionsData } from '../../../masterdata/customers/sessionData';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
 
 // Expanded sample data including visits to multiple game stations
 const expandedCustomerData = [
@@ -161,6 +164,14 @@ const CustomerTracking = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+       <div className="flex items-center text-gray-600 text-sm pb-4">
+                    <FaHome className="mr-1 text-blue-500" />
+                    <Link to="/" className="hover:underline">Home</Link>
+                    <FaChevronRight className="mx-2 text-gray-400" />
+                    <Link to="/customers" className="hover:underline">Customers</Link>
+                    <FaChevronRight className="mx-2 text-gray-400" />
+                    <span className="text-orange-500">Customer Tracking</span>
+                  </div>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Customer Tracking</h1>
       
       {/* Filters */}

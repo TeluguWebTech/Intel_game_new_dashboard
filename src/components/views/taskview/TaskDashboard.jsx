@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 // Sample data (you can import your actual data)
 const empTaskDetails = [
@@ -85,7 +87,7 @@ const serviceTaskDetails = [
 // Combine all task types into one array
 const allTasks = [...empTaskDetails, ...salesTaskDetails, ...serviceTaskDetails];
 
-const TaskTable = () => {
+const TaskDashboard = () => {
   const [tasks, setTasks] = useState(allTasks);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
@@ -134,12 +136,49 @@ const TaskTable = () => {
     setTasks(allTasks);
   };
 
+  // Function to handle adding new tasks (to be implemented)
+  const handleAddTask = (taskType) => {
+    // Here you would typically open a modal or navigate to a form
+    console.log(`Adding new ${taskType} task`);
+    // For now, we'll just show an alert
+    alert(`Add new ${taskType} task form would open here`);
+  };
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Task Details</h1>
-      
-      {/* Filters Section */}
-      <div className="bg-white p-4 rounded-lg shadow-md mb-6">
+    <div className="px-4 py-8">
+    <div className="flex items-center text-gray-600 text-sm pb-8">
+      <FaHome className="mr-1 text-blue-500" />
+      <Link to="/" className="hover:underline">Home</Link>
+      <FaChevronRight className="mx-2 text-gray-400" />
+      <span className="text-orange-500">Employee Dashboard</span>
+    </div>
+    
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+      <h1 className="text-2xl font-bold">Task Management</h1>
+      <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+        <button 
+          onClick={() => handleAddTask('Employee')}
+          className="flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm sm:text-base"
+        >
+          <FaPlus className="mr-2" /> <span>Employee Task</span>
+        </button>
+        <button 
+          onClick={() => handleAddTask('Sales')}
+          className="flex items-center justify-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition text-sm sm:text-base"
+        >
+          <FaPlus className="mr-2" /> <span>Sales Task</span>
+        </button>
+        <button 
+          onClick={() => handleAddTask('Service')}
+          className="flex items-center justify-center px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition text-sm sm:text-base"
+        >
+          <FaPlus className="mr-2" /> <span>Service Task</span>
+        </button>
+      </div>
+    </div>
+    
+         {/* Filters Section */}
+         <div className="bg-white p-4 rounded-lg shadow-md mb-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Search</label>
@@ -283,8 +322,8 @@ const TaskTable = () => {
           </table>
         </div>
       </div>
-    </div>
+  </div>
   );
 };
 
-export default TaskTable;
+export default TaskDashboard;

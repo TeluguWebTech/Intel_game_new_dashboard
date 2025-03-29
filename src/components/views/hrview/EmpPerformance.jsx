@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { empData } from '../../../masterdata/hrdata/employeeData';
+import { FaHome, FaChevronRight, FaPlus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const EmployeePerformance = () => {
   const [employees, setEmployees] = useState(empData);
@@ -53,6 +55,14 @@ const EmployeePerformance = () => {
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
+             <div className="flex items-center text-gray-600 text-sm pb-4">
+                                <FaHome className="mr-1 text-blue-500" />
+                                <Link to="/" className="hover:underline">Home</Link>
+                                <FaChevronRight className="mx-2 text-gray-400" />
+                                <Link to="/hr" className="hover:underline">HR</Link>
+                                <FaChevronRight className="mx-2 text-gray-400" />
+                                <span className="text-orange-500">Performance</span>
+                              </div>
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Employee Performance & Reviews</h1>
       
       {/* Filters */}

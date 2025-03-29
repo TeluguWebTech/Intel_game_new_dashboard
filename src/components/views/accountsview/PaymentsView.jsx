@@ -2,11 +2,14 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { paymentsData } from '../../../masterdata/accounts/paymentsData';
+import { FaHome, FaChevronRight, FaPlus, FaEye } from "react-icons/fa";
+import { Link, useNavigate } from 'react-router-dom';
 
 const PaymentsView = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('All');
   const [selectedDate, setSelectedDate] = useState(null);
+  const navigate = useNavigate();
   
   // Get unique regions for dropdown
   const regions = ['All', ...new Set(paymentsData.map(payment => payment.region))];
@@ -26,8 +29,21 @@ const PaymentsView = () => {
     return matchesSearch && matchesRegion && matchesDate;
   });
 
+  const handleViewDetails = (vendorId) => {
+    navigate(`/accounts/payments/${vendorId}`);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
+      <div className="flex items-center text-gray-600 text-sm pb-2">
+        <FaHome className="mr-1 text-blue-500" />
+        <Link to="/" className="hover:underline">Home</Link>
+        <FaChevronRight className="mx-2 text-gray-400" />
+        <Link to="/accounts" className="hover:underline">Accounts</Link>
+        <FaChevronRight className="mx-2 text-gray-400" />
+        <span className="text-orange-500">Payments</span>
+      </div>
+      
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
         <h1 className="text-2xl font-bold text-gray-800">Payments Dashboard</h1>
         <div className="text-sm text-gray-600 mt-2 md:mt-0">
@@ -154,6 +170,17 @@ const PaymentsView = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+              
+              {/* Card Footer */}
+              <div className="px-5 py-3 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
+                <span className="text-xs text-gray-500">Auth: {payment.authorization_id}</span>
+                <button
+                  onClick={() => handleViewDetails(payment.vendor_id)}
+                  className="flex items-center text-blue-600 hover:text-blue-800 text-sm"
+                >
+                  <FaEye className="mr-1" /> View Details
+                </button>
               </div>
             </div>
           ))}
